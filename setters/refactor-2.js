@@ -11,12 +11,16 @@ const obj1 = {
 const obj2 = {
   numbers: [12, 4, 9, 36],
   mods: [],
-  _modulo: 3
+  _modulo: 3,
+  set Modulo(newModulo) {
+    this.modulo = newModulo;
+    this.mods = this.numbers.map(x => x % this.modulo);
+  }
 }
 
 
 obj1.setModulo(3);
-; // write this line
+obj2.Modulo =3 ; // write this line
 
 const test1 = JSON.stringify(obj1.mods) === '[0,1,0,0]';
 console.assert(test1, 'Test 1');
@@ -26,7 +30,7 @@ console.assert(test2, 'Test 2');
 
 
 obj1.setModulo(2);
-; // write this line
+obj2.Modulo = 2; // write this line
 
 const test3 = JSON.stringify(obj1.mods) === '[0,0,1,0]';
 console.assert(test3, 'Test 3');
